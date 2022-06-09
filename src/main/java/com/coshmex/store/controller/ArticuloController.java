@@ -9,6 +9,7 @@ import javax.management.remote.rmi.RMIServer;
 import javax.servlet.http.HttpServletRequest;
 
 import com.coshmex.store.mappper.ProductMapper;
+import com.coshmex.store.mappper.ProductUniversalMapper;
 import com.coshmex.store.model.Item;
 import com.coshmex.store.model.ProductoShopify;
 import com.coshmex.store.service.ProductoShopifyLayoutWriterService;
@@ -68,8 +69,8 @@ public class ArticuloController {
   WebResource webresource = client.resource(url2);
   list = webresource.get(new GenericType<List<Item>>(){});
 
-
-
+//    productShopifyService.writeCSV();
+    logger.info(" Tamaño {} ",list.size());
 
     return list;
   }
