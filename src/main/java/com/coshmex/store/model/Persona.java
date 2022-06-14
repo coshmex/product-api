@@ -1,4 +1,4 @@
-package com.coshmex.web.base.model;
+ package com.coshmex.store.model;
 
 import java.io.Serializable;
 import java.util.Objects;

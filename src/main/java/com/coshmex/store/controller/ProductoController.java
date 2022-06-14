@@ -34,8 +34,10 @@ public class ProductoController {
             listaFinal.add(item);
         }
         return listaFinal;
-
-
     }
+
+
+    //POST
+
 
 }
