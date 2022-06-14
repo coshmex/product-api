@@ -24,8 +24,8 @@ public class Producto implements Serializable {
     @Id
     @Column(name = "idProducto")
     private Integer idProducto;
-    
-   
+
+
     @Column(name = "descripcion")
     private String descripcion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -42,16 +42,16 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "clave")
     private String clave;
-    
+
     @Column(name = "estatus")
     private String estatus;
-    
+
 
 
     @JoinColumn(name = "idUnidad", referencedColumnName = "idUnidad")
     @ManyToOne
     private Unidad idUnidad;
-    
+
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     @ManyToOne
     private Categoria idCategoria;
@@ -207,5 +207,5 @@ public class Producto implements Serializable {
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.removePropertyChangeListener(listener);
     }
-    
+
 }

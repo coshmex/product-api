@@ -1,7 +1,5 @@
 package com.coshmex.store.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -59,7 +57,7 @@ public class ProductoSyscom implements Serializable {
         this.titulo = titulo;
     }
 
-    public String getExistencia() {
+    public String getExistencia(String disponible) {
         return existencia;
     }
 
@@ -130,4 +128,5 @@ public class ProductoSyscom implements Serializable {
     public void setCodigo_fiscal(String codigo_fiscal) {
         this.codigo_fiscal = codigo_fiscal;
     }
+
 }

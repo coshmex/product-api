@@ -8,6 +8,10 @@ import java.util.*;
 import javax.management.remote.rmi.RMIServer;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import com.coshmex.store.mappper.ProductMapper;
 import com.coshmex.store.mappper.ProductUniversalMapper;
 import com.coshmex.store.model.Item;
@@ -20,7 +24,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,18 +38,20 @@ import org.springframework.web.servlet.view.xml.MappingJackson2XmlView;
 @Controller
 public class ArticuloController {
   private static final Logger logger =  LoggerFactory.getLogger(ArticuloController.class);
-  
+
   private static final double IVA = 1.16D;
-  
+
   Map<Integer, List<String>> pdtData = new HashMap<>();
-  
+
   ProductMapper pMapper = new ProductMapper();
-  
+
   @Autowired
   ProductoShopifyLayoutWriterService productShopifyService;
 
+  @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 
   @RequestMapping(value = {"/rest/articulos"}, method = {RequestMethod.GET})
+  @GetMapping("/rest/articulos")
   @ResponseBody
   public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
     logger.info("Start  Searching Product with codigo {} and brand {}  ", codigo, marca);
