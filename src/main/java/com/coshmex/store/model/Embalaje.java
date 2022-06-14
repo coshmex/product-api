@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.coshmex.web.base.model;
+package com.coshmex.store.model;
 
 
 import javax.persistence.*;
