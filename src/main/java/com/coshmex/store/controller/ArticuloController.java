@@ -8,6 +8,7 @@ import java.util.*;
 import javax.management.remote.rmi.RMIServer;
 import javax.servlet.http.HttpServletRequest;
 
+import com.coshmex.store.service.ProductoService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,9 @@ public class ArticuloController {
   @Autowired
   ProductoShopifyLayoutWriterService productShopifyService;
 
+  @Autowired
+    ProductoService productoService;
+
   @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 
   @RequestMapping(value = {"/rest/articulos"}, method = {RequestMethod.GET})
@@ -58,26 +62,32 @@ public class ArticuloController {
     String url = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658";
     StringBuffer sb = new StringBuffer(url);
     sb.append("&marca=").append(marca);
+    sb.append("&grupo=").append(grupo);
     sb.append("&clave=").append(clave);
     sb.append("&codigo=").append(codigo);
-    sb.append("&grupo=").append(grupo);
-    sb.append("&promos=").append("1");
     sb.append("&porcentaje=").append("10");
+    sb.append("&promos=").append("1");
 
-   String url2 = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658&marca=&grupo=PORTATILES&clave=&codigo=&porcentaje=10&promos=1";
-   List<Item> list = null;
 
+    System.out.println("hola " + sb.toString());
+
+   String url2 = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658&marca=&grupo=MONITORES&clave=&codigo=&porcentaje=10&promos=1";
+   List <Item> list = null;
 
   DefaultClientConfig defaultClientConfig = new DefaultClientConfig();
   defaultClientConfig.getClasses().add(MappingJackson2XmlView.class);
   com.sun.jersey.api.client.config.ClientConfig config = new com.sun.jersey.api.client.config.DefaultClientConfig();
-  Client client = Client.create(config);    logger.info(" sb {}", url2 );
-  WebResource webresource = client.resource(url2);
+  Client client = Client.create(config);    logger.info(" sb {}", url );
+  WebResource webresource = client.resource(sb.toString());
   list = webresource.get(new GenericType<List<Item>>(){});
+
+    productoService.guardaLista(list);
 
 //    productShopifyService.writeCSV();
     logger.info(" Tamaño {} ",list.size());
 
     return list;
+
+
   }
 }

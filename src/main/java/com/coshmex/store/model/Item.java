@@ -52,7 +52,8 @@ public class Item implements Serializable {
 
   public Item() {}
 
-  public Item(String clave, String codigo_fabricante, String descripcion, String grupo, String marca, String garantia, String clase, String disponible, String moneda, String ficha_tecnica, String ficha_comercial, String imagen, String disponibleCD, String totalDescuento, String monedaDescuento, String precioDescuento, String monedaPrecioDescuento, String clavePromocion, String vencimientoPromocion) {
+  public Item(int id, String clave, String codigo_fabricante, String descripcion, String grupo, String marca, String garantia, String clase, String disponible, String moneda, String ficha_tecnica, String ficha_comercial, String imagen, String disponibleCD, String totalDescuento, String monedaDescuento, String precioDescuento, String monedaPrecioDescuento, String clavePromocion, String vencimientoPromocion) {
+    this.id = id;
     this.clave = clave;
     this.codigo_fabricante = codigo_fabricante;
     this.descripcion = descripcion;
@@ -243,6 +244,6 @@ public class Item implements Serializable {
   }
 
   public String toString() {
-    return "Item [clave=" + this.clave + ", codigo_fabricante=" + this.codigo_fabricante + ", descripcion=" + this.descripcion + ", grupo=" + this.grupo + ", marca=" + this.marca + ", garantia=" + this.garantia + ", clase=" + this.clase + ", disponible=" + this.disponible + ", moneda=" + this.moneda + ", ficha_tecnica=" + this.ficha_tecnica + ", ficha_comercial=" + this.ficha_comercial + ", imagen=" + this.imagen + ", disponibleCD=" + this.disponibleCD + ", TotalDescuento=" + this.TotalDescuento + ", MonedaDescuento=" + this.MonedaDescuento + ", PrecioDescuento=" + this.PrecioDescuento + ", MonedaPrecioDescuento=" + this.MonedaPrecioDescuento + ", ClavePromocion=" + this.ClavePromocion + ", VencimientoPromocion=" + this.VencimientoPromocion + ", precio=" + this.precio + "]";
+    return "Item [id=" + this.id + ", clave=" + this.clave + ", codigo_fabricante=" + this.codigo_fabricante + ", descripcion=" + this.descripcion + ", grupo=" + this.grupo + ", marca=" + this.marca + ", garantia=" + this.garantia + ", clase=" + this.clase + ", disponible=" + this.disponible + ", moneda=" + this.moneda + ", ficha_tecnica=" + this.ficha_tecnica + ", ficha_comercial=" + this.ficha_comercial + ", imagen=" + this.imagen + ", disponibleCD=" + this.disponibleCD + ", TotalDescuento=" + this.TotalDescuento + ", MonedaDescuento=" + this.MonedaDescuento + ", PrecioDescuento=" + this.PrecioDescuento + ", MonedaPrecioDescuento=" + this.MonedaPrecioDescuento + ", ClavePromocion=" + this.ClavePromocion + ", VencimientoPromocion=" + this.VencimientoPromocion + ", precio=" + this.precio + "]";
   }
 }

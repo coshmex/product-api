@@ -17,7 +17,9 @@ public class ProductMapper {
       target.setMarca(item.getMarca());
       target.setModelo(item.getGrupo());
       target.setTitulo(item.getDescripcion());
-      target.getExistencia(item.getDisponible());
+      target.setExistencia(item.getDisponible());
+      target.setUrl_imagen(item.getImagen());
+      target.setPrecio_listaUSD(item.getPrecio());
       return target;
   }
 

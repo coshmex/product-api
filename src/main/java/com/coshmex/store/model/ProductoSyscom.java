@@ -14,6 +14,8 @@ public class ProductoSyscom implements Serializable {
 
     private String modelo;
     private String Marca;
+
+    @Column(unique = true, nullable = false)
     private String titulo;
     private String existencia;
     private String en_camino;
@@ -89,7 +91,7 @@ public class ProductoSyscom implements Serializable {
         this.precio_especial = precio_especial;
     }
 
-    public String getUrl_imagen() {
+    public String getUrl_imagen(String url_imagen) {
         return url_imagen;
     }
 
