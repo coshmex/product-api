@@ -13,7 +13,8 @@ public class ProductoSyscom implements Serializable {
     private Integer idProducto;
 
     private String modelo;
-    private String Marca;
+
+    private String marca;
 
     @Column(unique = true, nullable = false)
     private String titulo;
@@ -27,7 +28,7 @@ public class ProductoSyscom implements Serializable {
     private String descripcion_fiscal;
     private String codigo_fiscal;
 
-    public Integer getIdProducto() {
+    public Integer getIdProducto () {
         return idProducto;
     }
 
@@ -44,11 +45,11 @@ public class ProductoSyscom implements Serializable {
     }
 
     public String getMarca() {
-        return Marca;
+        return marca;
     }
 
     public void setMarca(String marca) {
-        Marca = marca;
+        this.marca = marca;
     }
 
     public String getTitulo() {
@@ -91,7 +92,7 @@ public class ProductoSyscom implements Serializable {
         this.precio_especial = precio_especial;
     }
 
-    public String getUrl_imagen(String url_imagen) {
+    public String getUrl_imagen() {
         return url_imagen;
     }
 
@@ -130,5 +131,6 @@ public class ProductoSyscom implements Serializable {
     public void setCodigo_fiscal(String codigo_fiscal) {
         this.codigo_fiscal = codigo_fiscal;
     }
+
 
 }

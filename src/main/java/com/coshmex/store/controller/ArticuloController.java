@@ -57,7 +57,7 @@ public class ArticuloController {
   @RequestMapping(value = {"/rest/articulos"}, method = {RequestMethod.GET})
   @GetMapping("/rest/articulos")
   @ResponseBody
-  public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
+  public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "ACCESORIOS", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
     logger.info("Start  Searching Product with codigo {} and brand {}  ", codigo, marca);
     String url = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658";
     StringBuffer sb = new StringBuffer(url);
@@ -70,9 +70,7 @@ public class ArticuloController {
 
 
     System.out.println("hola " + sb.toString());
-
-   String url2 = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658&marca=&grupo=MONITORES&clave=&codigo=&porcentaje=10&promos=1";
-   List <Item> list = null;
+    List <Item> list = null;
 
   DefaultClientConfig defaultClientConfig = new DefaultClientConfig();
   defaultClientConfig.getClasses().add(MappingJackson2XmlView.class);
@@ -84,10 +82,9 @@ public class ArticuloController {
     productoService.guardaLista(list);
 
 //    productShopifyService.writeCSV();
-    logger.info(" Tamaño {} ",list.size());
+    logger.info(" Tamaño {} ", list.size());
 
     return list;
-
 
   }
 }
