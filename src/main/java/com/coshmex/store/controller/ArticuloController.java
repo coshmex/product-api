@@ -57,8 +57,8 @@ public class ArticuloController {
   @RequestMapping(value = {"/rest/articulos"}, method = {RequestMethod.GET})
   @GetMapping("/rest/articulos")
   @ResponseBody
-  public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "ACCESORIOS", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
-    logger.info("Start  Searching Product with codigo {} and brand {}  ", codigo, marca);
+  public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "PORTATILES", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
+    logger.info("Start  Searching Product with codigo {} and brand {}  ");
     String url = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658";
     StringBuffer sb = new StringBuffer(url);
     sb.append("&marca=").append(marca);
@@ -68,14 +68,15 @@ public class ArticuloController {
     sb.append("&porcentaje=").append("10");
     sb.append("&promos=").append("1");
 
-
     System.out.println("hola " + sb.toString());
+
     List <Item> list = null;
 
   DefaultClientConfig defaultClientConfig = new DefaultClientConfig();
   defaultClientConfig.getClasses().add(MappingJackson2XmlView.class);
   com.sun.jersey.api.client.config.ClientConfig config = new com.sun.jersey.api.client.config.DefaultClientConfig();
-  Client client = Client.create(config);    logger.info(" sb {}", url );
+  Client client = Client.create(config);
+  logger.info(" sb {}", url );
   WebResource webresource = client.resource(sb.toString());
   list = webresource.get(new GenericType<List<Item>>(){});
 
