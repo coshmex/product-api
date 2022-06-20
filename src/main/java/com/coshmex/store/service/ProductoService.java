@@ -8,6 +8,10 @@ public interface ProductoService{
     int guarda(Item producto);
 
     int guardaLista(List<Item> saveList);
+
+    Item getProducto (String clave);
+
+    Item getCategoria (String categoria);
 }
 
 

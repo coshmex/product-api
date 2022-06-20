@@ -57,7 +57,12 @@ public class ArticuloController {
   @RequestMapping(value = {"/rest/articulos"}, method = {RequestMethod.GET})
   @GetMapping("/rest/articulos")
   @ResponseBody
-  public List<Item> getproduct(HttpServletRequest request, @RequestParam(value = "marca", defaultValue = "", required = false) String marca, @RequestParam(value = "clave", defaultValue = "", required = false) String clave, @RequestParam(value = "grupo", defaultValue = "", required = false) String grupo, @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo) {
+  public List<Item> getproduct(HttpServletRequest request,
+                               @RequestParam(value = "marca", defaultValue = "", required = false) String marca,
+                               @RequestParam(value = "clave", defaultValue = "", required = false) String clave,
+                               @RequestParam(value = "grupo", defaultValue = "MONITORES", required = false) String grupo,
+                               @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo
+  ) {
     logger.info("Start  Searching Product with codigo {} and brand {}  ");
     String url = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658";
     StringBuffer sb = new StringBuffer(url);
@@ -67,6 +72,8 @@ public class ArticuloController {
     sb.append("&codigo=").append(codigo);
     sb.append("&porcentaje=").append("10");
     sb.append("&promos=").append("1");
+
+    logger.info("URL {}", sb.toString());
 
     List <Item> list = null;
 

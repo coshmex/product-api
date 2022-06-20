@@ -16,16 +16,19 @@ import java.io.Serializable;
  * @author vladd
  */
 @Entity
-@Table(name = "Producto")
+@Table(name = "producto")
 public class Producto implements Serializable {
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idProducto")
     private Integer idProducto;
 
 
+    @Column(name = "clave", unique = true)
+    private String clave;
     @Column(name = "descripcion")
     private String descripcion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -33,18 +36,26 @@ public class Producto implements Serializable {
     private Double precio;
     @Column(name = "marca")
     private String marca;
+
+    @Column(name = "categoria")
+    private String categoria;
+
+
+    @Column(name = "proveedor")
+    private String proveedor;
+
     @Column(name = "existencia")
-    private Double existencia;
+    private String existencia;
     @Column(name = "stock_min")
     private Integer stockMin;
     @Column(name = "stock_max")
     private Integer stockMax;
-    @Basic(optional = false)
-    @Column(name = "clave")
-    private String clave;
 
     @Column(name = "estatus")
     private String estatus;
+
+    @Column(name = "imagen")
+    private String imagen;
 
 
 
@@ -65,10 +76,12 @@ public class Producto implements Serializable {
         this.idProducto = idProducto;
     }
 
-    public Producto(Integer idProducto, String descripcion, String clave) {
+    public Producto(Integer idProducto, String descripcion, String clave, String modelo, String imagen) {
         this.idProducto = idProducto;
         this.descripcion = descripcion;
         this.clave = clave;
+        this.categoria = categoria;
+        this.imagen = imagen;
     }
 
     public Integer getIdProducto() {
@@ -111,12 +124,12 @@ public class Producto implements Serializable {
         changeSupport.firePropertyChange("marca", oldMarca, marca);
     }
 
-    public Double getExistencia() {
+    public String getExistencia() {
         return existencia;
     }
 
-    public void setExistencia(Double existencia) {
-        Double oldExistencia = this.existencia;
+    public void setExistencia(String existencia) {
+        String oldExistencia = this.existencia;
         this.existencia = existencia;
         changeSupport.firePropertyChange("existencia", oldExistencia, existencia);
     }
@@ -146,9 +159,7 @@ public class Producto implements Serializable {
     }
 
     public void setClave(String clave) {
-        String oldClave = this.clave;
         this.clave = clave;
-        changeSupport.firePropertyChange("clave", oldClave, clave);
     }
 
     public String getEstatus() {
@@ -161,7 +172,21 @@ public class Producto implements Serializable {
         changeSupport.firePropertyChange("estatus", oldEstatus, estatus);
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
 
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     public Categoria getIdCategoria() {
         return idCategoria;
