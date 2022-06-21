@@ -1,7 +1,8 @@
 package com.coshmex.store.model;
 
-import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.ArrayList;
 //LAYOUT
 @XmlRootElement
 public class Item implements Serializable {

@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -77,7 +76,7 @@ public class Producto implements Serializable {
         this.idProducto = idProducto;
     }
 
-    public Producto(Integer idProducto, String descripcion, String clave, String modelo, String imagen) {
+    public Producto(Integer idProducto, String descripcion, String clave, String modelo, String imagen, String categoria) {
         this.idProducto = idProducto;
         this.descripcion = descripcion;
         this.clave = clave;

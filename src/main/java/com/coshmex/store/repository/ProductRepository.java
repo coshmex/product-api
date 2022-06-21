@@ -11,6 +11,4 @@ public interface ProductRepository extends JpaRepository<Producto, String> {
 
     @Query(value = "SELECT u FROM Producto u WHERE u.clave = ?1")
     Producto findByClave (String clave);
-
-
 }

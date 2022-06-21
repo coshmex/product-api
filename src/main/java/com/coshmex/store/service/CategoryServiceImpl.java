@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -19,13 +21,23 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryRepository categoryRepository;
 
     @Override
-    public Item getCategoria(String categoria) {
+    public Item getCategory(String categoria) {
           ProductMapper mapper = new ProductMapper();
           Producto productos = (Producto) categoryRepository.findByCategoria(categoria);
             Item items = mapper.fromProducto(productos);
-            logger.info(" CLAVE {} descripcion {}" , categoria, items.getDescripcion());
+            logger.info(" CATEGORIA {} " , categoria, items.getDescripcion());
             return items;
-
     }
+
+    @Override
+    public List<Item> getCategories() {
+        return null;
+    }
+
+    @Override
+    public List<Producto> getCategories(String categoria) {
+        return categoryRepository.findByCategoria(categoria);
+    }
+
 
 }

@@ -60,7 +60,7 @@ public class ArticuloController {
   public List<Item> getproduct(HttpServletRequest request,
                                @RequestParam(value = "marca", defaultValue = "", required = false) String marca,
                                @RequestParam(value = "clave", defaultValue = "", required = false) String clave,
-                               @RequestParam(value = "grupo", defaultValue = "MONITORES", required = false) String grupo,
+                               @RequestParam(value = "grupo", defaultValue = "", required = false) String grupo,
                                @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo
   ) {
     logger.info("Start  Searching Product with codigo {} and brand {}  ");
