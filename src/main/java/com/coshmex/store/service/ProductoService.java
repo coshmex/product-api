@@ -11,7 +11,7 @@ public interface ProductoService{
 
     Item getProducto (String clave);
 
-    Item getCategoria (String categoria);
+
 }
 
 

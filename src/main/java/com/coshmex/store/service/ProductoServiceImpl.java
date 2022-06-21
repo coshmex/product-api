@@ -1,18 +1,13 @@
 package com.coshmex.store.service;
 
-import com.coshmex.store.controller.ProductoController;
 import com.coshmex.store.mappper.ProductMapper;
 import com.coshmex.store.model.Item;
 import com.coshmex.store.model.Producto;
-import com.coshmex.store.model.ProductoSyscom;
-import com.coshmex.store.repository.CategoryRepository;
 import com.coshmex.store.repository.ProductRepository;
-import org.apache.catalina.mapper.Mapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -46,13 +41,6 @@ public class ProductoServiceImpl implements ProductoService{
         return item;
     }
 
-    @Override
-    public Item getCategoria(String categoria) {
-        ProductMapper mapper = new ProductMapper();
-        Producto producto = CategoryRepository.findByCategoria(categoria);
-        Item item = mapper.fromProducto(producto);
-        logger.info(" CATEGORIA {} categoria {}" , categoria, item.getGrupo());
-        return item;
-    }
+
 }
 

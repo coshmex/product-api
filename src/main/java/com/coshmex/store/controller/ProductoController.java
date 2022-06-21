@@ -21,6 +21,7 @@ public class ProductoController {
     @RequestMapping(value = {"/rest/getProducto"}, method = {RequestMethod.GET})
     @GetMapping("/rest/getProducto")
     @ResponseBody
+
     public Item getProducto(HttpServletRequest request,
                             @RequestParam(value = "clave", defaultValue = "", required = false) String clave) {
 
