@@ -20,7 +20,7 @@ public class CategoryController {
     public List<String> getCategoria(HttpServletRequest request,
                                      @RequestParam(value = "categoria", defaultValue = "", required = false) String categoria) {
 
-        logger.info("   CATEGORIA {}   " , categoria);
+        logger.info("   CATEGORIAS EXISTENTES  ");
 
         return categoryService.getCategories(categoria);
 

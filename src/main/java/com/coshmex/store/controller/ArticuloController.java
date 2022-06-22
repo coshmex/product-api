@@ -1,33 +1,21 @@
 package com.coshmex.store.controller;
 
-
-
-import java.io.IOException;
 import java.util.*;
-
-import javax.management.remote.rmi.RMIServer;
 import javax.servlet.http.HttpServletRequest;
-
 import com.coshmex.store.service.ProductoService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import com.coshmex.store.mappper.ProductMapper;
-import com.coshmex.store.mappper.ProductUniversalMapper;
 import com.coshmex.store.model.Item;
-import com.coshmex.store.model.ProductoShopify;
 import com.coshmex.store.service.ProductoShopifyLayoutWriterService;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
-import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -87,7 +75,6 @@ public class ArticuloController {
 
     productoService.guardaLista(list);
 
-//    productShopifyService.writeCSV();
     logger.info(" Tamaño {} ", list.size());
 
     return list;

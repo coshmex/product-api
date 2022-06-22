@@ -14,7 +14,6 @@ public class ProductsController {
     static private Logger logger = LogManager.getLogger(ProductsController.class);
     @Autowired
     ProductsService productsService;
-
     @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
     @RequestMapping(value = {"/rest/getProducts"}, method = {RequestMethod.GET})
     @GetMapping("/rest/getProducts")
@@ -26,6 +25,12 @@ public class ProductsController {
         logger.info("   CATEGORIA {}   " , categoria);
 
         return productsService.getProducts(categoria);
-
+    }
+    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = {"/rest/getAllProducts"}, method = {RequestMethod.GET})
+    @GetMapping("/rest/getAllProducts")
+    @ResponseBody
+    public List<Producto> getAllProducts() {
+        return productsService.getAllProducts();
     }
 }

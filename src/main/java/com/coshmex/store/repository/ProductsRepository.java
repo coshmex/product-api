@@ -12,4 +12,6 @@ public interface ProductsRepository extends JpaRepository<Producto, String> {
 
     @Query(value = "SELECT u FROM Producto u WHERE u.categoria = ?1")
     List<Producto> findByCategoria(String categoria);
+
+    List<Producto> findAll();
 }
