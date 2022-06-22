@@ -18,6 +18,7 @@ public class ProductoController {
     @Autowired
     ProductoService productoService;
 
+    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
     @RequestMapping(value = {"/rest/getProducto"}, method = {RequestMethod.GET})
     @GetMapping("/rest/getProducto")
     @ResponseBody

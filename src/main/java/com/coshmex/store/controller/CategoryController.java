@@ -18,14 +18,15 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
+    @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
     @RequestMapping(value = {"/rest/getProductos"}, method = {RequestMethod.GET})
-    @GetMapping("/rest/getṔroductos")
+    @GetMapping("/rest/getProductos")
     @ResponseBody
 
     public List<Producto> getCategoria(HttpServletRequest request,
                                        @RequestParam(value = "categoria", defaultValue = "", required = false) String categoria) {
 
-        logger.info("   CLAVE {}  " , categoria);
+        logger.info("   CATEGORIA {}  " , categoria);
 
         return categoryService.getCategories(categoria);
 
