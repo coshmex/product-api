@@ -8,30 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @RestController
 public class ProductoController {
-
     static private Logger logger = LogManager.getLogger(ProductoController.class);
-
     @Autowired
     ProductoService productoService;
-
     @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
-    @RequestMapping(value = {"/rest/getProducto"}, method = {RequestMethod.GET})
-    @GetMapping("/rest/getProducto")
+    @RequestMapping(value = {"/rest/getProduct"}, method = {RequestMethod.GET})
+    @GetMapping("/rest/getProduct")
     @ResponseBody
 
     public Item getProducto(HttpServletRequest request,
                             @RequestParam(value = "clave", defaultValue = "", required = false) String clave) {
-
 
         logger.info("   CLAVE {}  " , clave);
 
         return productoService.getProducto(clave);
 
     }
-
     //POST
 }
