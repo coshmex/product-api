@@ -4,7 +4,6 @@ package com.coshmex.store.mappper;
 import com.coshmex.store.model.Item;
 import com.coshmex.store.model.Producto;
 import com.coshmex.store.model.ProductoShopify;
-import com.coshmex.store.model.ProductoSyscom;
 
 public class ProductMapper {
     public ProductoShopify fromProduct(Item item) {

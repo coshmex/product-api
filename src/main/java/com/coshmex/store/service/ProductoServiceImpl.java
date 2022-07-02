@@ -33,12 +33,12 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     @Override
-    public Item getProducto(String clave) {
+    public Producto getProducto(String clave) {
         ProductMapper mapper = new ProductMapper();
         Producto producto =   productRepository.findByClave(clave);
         Item item = mapper.fromProducto(producto);
         logger.info(" CLAVE {} descripcion {}" , clave, item.getDescripcion());
-        return item;
+        return producto;
     }
 
 

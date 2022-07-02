@@ -1,6 +1,7 @@
 package com.coshmex.store.controller;
 
 import com.coshmex.store.model.Item;
+import com.coshmex.store.model.Producto;
 import com.coshmex.store.service.ProductoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,8 +20,8 @@ public class ProductoController {
     @GetMapping("/rest/getProduct")
     @ResponseBody
 
-    public Item getProducto(HttpServletRequest request,
-                            @RequestParam(value = "clave", defaultValue = "", required = false) String clave) {
+    public Producto getProducto(HttpServletRequest request,
+                                @RequestParam(value = "clave", defaultValue = "", required = false) String clave) {
 
         logger.info("   CLAVE {}  " , clave);
 
