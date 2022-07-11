@@ -1,7 +1,6 @@
 package com.coshmex.store.service;
 
-import com.coshmex.store.mappper.ProductMapper;
-import com.coshmex.store.model.Item;
+
 import com.coshmex.store.model.Producto;
 import com.coshmex.store.repository.ProductsRepository;
 import org.apache.logging.log4j.LogManager;
