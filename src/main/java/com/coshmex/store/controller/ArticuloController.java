@@ -51,7 +51,7 @@ public class ArticuloController {
                                @RequestParam(value = "grupo", defaultValue = "", required = false) String grupo,
                                @RequestParam(value = "codigo", defaultValue = "", required = false) String codigo
   ) {
-    logger.info("Start  Searching Product with codigo {} and brand {}  ");
+    logger.info("Start  Searching Product with codigo {} and brand {}  ",new Object[]{codigo,marca});
     String url = "https://www.grupocva.com/catalogo_clientes_xml/lista_precios.xml?cliente=17658";
     StringBuffer sb = new StringBuffer(url);
     sb.append("&marca=").append(marca);
